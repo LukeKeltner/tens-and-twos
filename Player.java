@@ -7,6 +7,7 @@ public class Player
 	ArrayList<Integer> hand = new ArrayList<Integer>();
 	ArrayList<Integer> cardsFaceUp = new ArrayList<Integer>();
 	ArrayList<Integer> cardsFaceDown = new ArrayList<Integer>();
+	//HashMap<Integer,Integer> hand = new HashMap<Integer,Integer>();
 	Boolean hasTakenTurn = false;
 
 	public Player(String name)

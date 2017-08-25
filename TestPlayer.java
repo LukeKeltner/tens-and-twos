@@ -60,6 +60,17 @@ public class TestPlayer
 
 	public void playFromHand(ArrayList<Integer> deck, ArrayList<Integer> pile)
 	{
+		for (int i=0; i<hand.size(); i++)
+		{
+			if (hand.get(i) == 4)
+			{
+				System.out.println(name+" has 4 "+i+"'s!");
+				hand.put(i, 0);
+				pile.clear();
+				takeTurn(deck, pile);
+			}
+		}
+
 		if (pile.size() == 0)
 		{
 			for (int i=0; i<hand.size()-2; i++)
@@ -122,6 +133,7 @@ public class TestPlayer
 					System.out.println(name+" plays a 2!  SHOOM!");
 					hand.put(11, hand.get(11)-1);
 					pile.add(11);
+
 					//PLAYER NEEDS TO TAKE ANOTHER TURN!
 					takeTurn(deck, pile);
 				}
@@ -131,6 +143,7 @@ public class TestPlayer
 					System.out.println(name+" plays a 10!  BOOM!");
 					hand.put(12, hand.get(12)-1);
 					pile.clear();
+
 					//PLAYER NEEDS TO TAKE ANOTHER TURN!
 					takeTurn(deck, pile);
 				}

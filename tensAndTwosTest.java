@@ -101,6 +101,7 @@ public class tensAndTwosTest
 			listOfPlayers.get(0).takeTurn(deck, pile);
 			listOfPlayers.get(1).takeTurn(deck, pile);
 			listOfPlayers.get(2).takeTurn(deck, pile);
+			listOfPlayers.get(3).takeTurn(deck, pile);
 		}
 	}
 }

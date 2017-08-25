@@ -46,11 +46,20 @@ public class TestPlayer
 		hand.put(card, 0);
 	}
 
-	public void takeTurn(ArrayList<Integer> deck, ArrayList<Integer> pile)
+	public int numberOfCardsInHand()
 	{
-		System.out.println("-------------------------------- "+name+"'s Turn -------------------------------- ");
-		System.out.println("Their hand "+hand);
-		System.out.println("The pile is "+pile);
+		int sum = 0;
+
+		for (int i=0; i<hand.size(); i++)
+		{
+			sum = sum + hand.get(i);
+		}
+
+		return sum;
+	}
+
+	public void playFromHand(ArrayList<Integer> deck, ArrayList<Integer> pile)
+	{
 		if (pile.size() == 0)
 		{
 			for (int i=0; i<hand.size()-2; i++)
@@ -81,7 +90,7 @@ public class TestPlayer
 			for (int i=0; i<hand.size()-2; i++)
 			{
 				//If the player can play a card that isn't a two or a ten...
-				if (i >= topCard && hand.get(i) > 0)
+				if ((i >= topCard || topCard == 11) && hand.get(i) > 0)
 				{
 					System.out.println(name+" can play a card! He has "+hand.get(i)+" of the card "+i);
 					int numberOfCardsPlaced = hand.get(i);
@@ -114,6 +123,7 @@ public class TestPlayer
 					hand.put(11, hand.get(11)-1);
 					pile.add(11);
 					//PLAYER NEEDS TO TAKE ANOTHER TURN!
+					takeTurn(deck, pile);
 				}
 
 				else if(hand.get(12) != 0)
@@ -121,6 +131,8 @@ public class TestPlayer
 					System.out.println(name+" plays a 10!  BOOM!");
 					hand.put(12, hand.get(12)-1);
 					pile.clear();
+					//PLAYER NEEDS TO TAKE ANOTHER TURN!
+					takeTurn(deck, pile);
 				}
 			}
 
@@ -135,8 +147,23 @@ public class TestPlayer
 				}
 
 				pile.clear();
+
+				//PLAYER NEEDS TO TAKE ANOTHER TURN!
+				takeTurn(deck, pile);
 			}	
 		}
+	}
+
+	public void takeTurn(ArrayList<Integer> deck, ArrayList<Integer> pile)
+	{
+		int numberOfCardsInHand = numberOfCardsInHand();
+		System.out.println("-------------------------------- "+name+"'s Turn -------------------------------- ");
+		System.out.println("Their hand "+hand);
+		System.out.println("They have "+numberOfCardsInHand+" cards in their hand.");
+		System.out.println("The pile is "+pile);
+
+
+		playFromHand(deck, pile);
 
 		System.out.println("Their hand "+hand);
 		System.out.println("The pile is "+pile);

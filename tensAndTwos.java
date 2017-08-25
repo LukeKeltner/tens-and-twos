@@ -85,11 +85,11 @@ public class tensAndTwos
 		System.out.println("current deck is "+deck);
 		System.out.println("The pile is "+pile);
 
-/*		for (int i=0; i<10; i++)
+		for (int i=0; i<10; i++)
 		{
 			listOfPlayers.get(0).takeTurn(deck, pile);
 			listOfPlayers.get(1).takeTurn(deck, pile);
 			listOfPlayers.get(2).takeTurn(deck, pile);
-		}*/
+		}
 	}
 }

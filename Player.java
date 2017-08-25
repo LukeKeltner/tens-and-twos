@@ -76,28 +76,42 @@ public class Player
 		for (int i=0; i<hand.size(); i++)
 		{
 			//If they have not played a card before...
-			if (!playedCard)
-			{
+
 				//...and if there is no card in the pile....
 				if (pile.size() == 0)
 				{
 					System.out.println("The pile is empty");
 
 					//If the card they run across is not a ten or a two...
-					if (hand.get(i) != 2 && hand.get(i) != 10)
+					if (hand.get(i) != 11 && hand.get(i) != 12)
 					{
-						//The player places down this card.  Since the deck is sorted, this will be their lowest non-ten or non-two card
-						System.out.println(name+" decides to play "+hand.get(i));
-						int index = i;
-						cardPlaced = hand.get(i);
-						placeCardOnPile(index, cardPlaced, pile);
-						howManyCardsPlayed = howManyCardsPlayed + 1;
-						//The player has played a card
-						playedCard = true;
-						//We keep track of what card the player played in order to see if they have more than one of this card
-						cardPlayed = cardPlaced;
-						System.out.println(name+"'s hand after playing is "+hand);
-						System.out.println("the pile is "+pile);
+						System.out.println("The card "+name+" is focused on is "+hand.get(i));
+
+
+							for (int k=i; k<hand.size(); k++)
+							{
+								if (!playedCard)
+								{
+									if (hand.get(k) == hand.get(i))
+									{
+										//The player places down this card.  Since the deck is sorted, this will be their lowest non-ten or non-two card
+										System.out.println(name+" decides to play "+hand.get(k));
+										int index = k;
+										cardPlaced = hand.get(k);
+										placeCardOnPile(index, cardPlaced, pile);
+										howManyCardsPlayed = howManyCardsPlayed + 1;
+										//The player has played a card
+										playedCard = true;
+										//We keep track of what card the player played in order to see if they have more than one of this card
+										cardPlayed = cardPlaced;
+										System.out.println(name+"'s hand after playing is "+hand);
+										System.out.println("the pile is "+pile);
+										k = k - 1;
+									}
+								}
+							}
+						
+
 						break;
 					}
 				}
@@ -205,10 +219,10 @@ public class Player
 						}
 					}
 				}
-			}
+		
 
 			//If the player has ANOTHER card in their hand that is the same value as the card they just played, they also play that card
-			System.out.println("We are right before putting down a duplicate.");
+/*			System.out.println("We are right before putting down a duplicate.");
 			System.out.println("The card being looked at is "+hand.get(i));
 			System.out.println("The card that was just played is "+cardPlayed);
 			if (hand.get(i) == cardPlayed)
@@ -220,7 +234,7 @@ public class Player
 				howManyCardsPlayed = howManyCardsPlayed + 1;
 				System.out.println(name+"'s hand after playing is "+hand);
 				System.out.println("the pile is "+pile);
-			}
+			}*/
 		}
 
 		//The player must pick up the amount of cards she/he played if the deck is not empty.

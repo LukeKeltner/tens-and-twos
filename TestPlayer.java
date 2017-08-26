@@ -6,8 +6,8 @@ public class TestPlayer
 {
 	String name;
 	HashMap<Integer,Integer> hand = new HashMap<Integer,Integer>();
-	ArrayList<Integer> cardsFaceUp = new ArrayList<Integer>();
-	ArrayList<Integer> cardsFaceDown = new ArrayList<Integer>();
+	HashMap<Integer,Integer> cardsFaceUp = new HashMap<Integer,Integer>();
+	HashMap<Integer,Integer> cardsFaceDown = new HashMap<Integer,Integer>();
 
 	public TestPlayer(String name)
 	{
@@ -21,12 +21,12 @@ public class TestPlayer
 
 	public void putCardFaceDown(int card)
 	{
-		cardsFaceDown.add(card);
+		cardsFaceDown.put(card, cardsFaceDown.get(card)+1);
 	}
 
 	public void putCardFaceUp(int card)
 	{
-		cardsFaceUp.add(card);
+		cardsFaceUp.put(card, cardsFaceUp.get(card)+1);
 	}
 
 	public void putCardInHand(int card)
@@ -175,8 +175,15 @@ public class TestPlayer
 		System.out.println("They have "+numberOfCardsInHand+" cards in their hand.");
 		System.out.println("The pile is "+pile);
 
+		if (numberOfCardsInHand > 0)
+		{
+			playFromHand(deck, pile);
+		}
 
-		playFromHand(deck, pile);
+		else if (numberOfCardsInHand == 0)
+		{
+			System.out.println(name+" has no more hard in their hand!");
+		}
 
 		System.out.println("Their hand "+hand);
 		System.out.println("The pile is "+pile);

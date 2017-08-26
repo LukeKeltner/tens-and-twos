@@ -42,6 +42,8 @@ public class tensAndTwosTest
 			for (int j=0; j<13; j++)
 			{
 				listOfPlayers.get(i).hand.put(j, 0);
+				listOfPlayers.get(i).cardsFaceUp.put(j, 0);
+				listOfPlayers.get(i).cardsFaceDown.put(j, 0);
 			}
 		}
 
@@ -91,6 +93,8 @@ public class tensAndTwosTest
 		{
 			System.out.println(listOfPlayers.get(i).name+"'s hand is...");
 			System.out.println(listOfPlayers.get(i).hand);
+			System.out.println("cards face down are: "+listOfPlayers.get(i).cardsFaceDown);
+			System.out.println("cards face up are: "+listOfPlayers.get(i).cardsFaceUp);
 		}
 
 		System.out.println("current deck is "+deck);

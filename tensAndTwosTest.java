@@ -26,10 +26,10 @@ public class tensAndTwosTest
 		System.out.println("The deck has "+deck.size()+" cards in it.");
 
 		//Adding Players
-		TestPlayer player1 = new TestPlayer("Patrick");
-		TestPlayer player2 = new TestPlayer("Matt");
-		TestPlayer player3 = new TestPlayer("Robert");
-		TestPlayer player4 = new TestPlayer("Bill");
+		TestPlayer player1 = new TestPlayer("Patrick", true);
+		TestPlayer player2 = new TestPlayer("Matt", true);
+		TestPlayer player3 = new TestPlayer("Robert", true);
+		TestPlayer player4 = new TestPlayer("Bill", true);
 
 		listOfPlayers.add(player1);
 		listOfPlayers.add(player2);
@@ -72,6 +72,7 @@ public class tensAndTwosTest
 		{
 			for (int j=0; j<listOfPlayers.size(); j++)
 			{
+				
 				listOfPlayers.get(j).putCardInHand(deck.get(0));
 				deck.remove(0);
 
